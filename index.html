@@ -1,14 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
+  <meta charset="UTF-8">
+  <title>Table Example</title>
+  <style>
+    table {
+      margin: 50px auto;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      border: 2px solid black;
+    }
+    td, th {
+      border: 1px solid black;
+      padding: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my first HTML page.</p>
-    <img src="" alt="Placeholder Image">
-    <a href="https://www.google.com">Click here to visit Google</a>
+  <table>
+    <!-- First row with description -->
+    <tr>
+      <td colspan="4"><b>Description</b></td>
+    </tr>
+
+    <!-- Items rows -->
+    <tr>
+      <td rowspan="3" colspan="2"><b>Items</b></td>
+      <td colspan="2">Milk</td>
+    </tr>
+    <tr>
+      <td colspan="2">Bread</td>
+    </tr>
+    <tr>
+      <td colspan="2">Butter</td>
+    </tr>
+
+    <!-- Price rows -->
+    <tr>
+      <td rowspan="3" colspan="2"><b>Price</b></td>
+      <td colspan="2">20</td>
+    </tr>
+    <tr>
+      <td colspan="2">30</td>
+    </tr>
+    <tr>
+      <td colspan="2">4</td>
+    </tr>
+
+    <!-- Images row -->
+    <tr>
+      <td><img src="images/budget.png" alt="Image1"></td>
+      <td><img src="images/credit.png" alt="Image2"></td>
+      <td><img src="images/profit.png" alt="Image3"></td>
+      <td><img src="images/jar.png" alt="Image4"></td>
+    </tr>
+
+    <!-- Buttons row -->
+    <tr>
+      <td colspan="2"><button class="add">Add</button></td>
+      <td><button class="update">Update</button></td>
+      <td><button class="remove">Remove</button></td>
+    </tr>
+  </table>
 </body>
 </html>
