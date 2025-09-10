@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Piano - Sa Re Ga Ma Pa Dha Ni Sa</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    .piano {
+      display: flex;
+    }
+    .key {
+      width: 60px;
+      height: 200px;
+      margin: 2px;
+      background: white;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+    }
+    .key:active {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="piano">
+    <div class="key" data-note="261.63">Sa</div>
+    <div class="key" data-note="293.66">Re</div>
+    <div class="key" data-note="329.63">Ga</div>
+    <div class="key" data-note="349.23">Ma</div>
+    <div class="key" data-note="392.00">Pa</div>
+    <div class="key" data-note="440.00">Dha</div>
+    <div class="key" data-note="493.88">Ni</div>
+    <div class="key" data-note="523.25">Sa</div>
+  </div>
+
+  <script>
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+
+    function playNote(freq) {
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.value = freq;
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      oscillator.start();
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+      oscillator.stop(audioCtx.currentTime + 1);
+    }
+
+    document.querySelectorAll('.key').forEach(key => {
+      key.addEventListener('click', () => {
+        playNote(parseFloat(key.dataset.note));
+      });
+    });
+  </script>
+</body>
+</html>
