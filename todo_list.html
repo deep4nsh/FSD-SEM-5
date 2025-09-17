@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TP - DP List</title>
+
+  <!-- Internal CSS -->
+  <style>
+    :root{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #4f46e5;
+      --accent-2: #06b6d4;
+      --shadow: 0 6px 18px rgba(16,24,40,0.08);
+      --radius: 12px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 100%);
+      color:#111827;
+    }
+
+    .container{
+      max-width:960px;
+      margin:40px auto;
+      padding:20px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    header h1{
+      font-size:20px;
+      margin:0;
+      letter-spacing:-0.2px;
+    }
+    header p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .list-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:14px;
+      overflow:hidden;
+    }
+
+    /* list layout */
+    .tp-dp-list{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+
+    /* each item */
+    .item{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:10px;
+      border-radius:10px;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .item:hover{
+      transform:translateY(-4px);
+      box-shadow: 0 8px 20px rgba(16,24,40,0.08);
+      background: linear-gradient(180deg, rgba(79,70,229,0.03), rgba(6,182,212,0.01));
+    }
+
+    .dp{
+      width:56px;
+      height:56px;
+      flex:0 0 56px;
+      border-radius:999px;
+      overflow:hidden;
+      display:inline-grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:white;
+      font-weight:600;
+      box-shadow: 0 4px 10px rgba(99,102,241,0.18);
+    }
+    .dp img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .tp{
+      flex:1 1 auto;
+      min-width:0;
+    }
+
+    .tp .title{
+      font-size:15px;
+      font-weight:600;
+      margin:0;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .tp .meta{
+      font-size:13px;
+      margin-top:4px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      font-size:12px;
+      color:white;
+      background:var(--accent);
+      margin-left:auto;
+      flex:0 0 auto;
+    }
+
+    /* action column */
+    .actions{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-left:10px;
+    }
+    .btn{
+      border:0;
+      padding:8px 10px;
+      font-size:13px;
+      border-radius:8px;
+      cursor:pointer;
+      background:#eef2ff;
+      color:var(--accent);
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid #eef2ff;
+      padding:7px 9px;
+    }
+
+    /* responsive */
+    @media (min-width:700px){
+      .tp-dp-list{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (min-width:1000px){
+      .tp-dp-list{
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* small utility */
+    .muted{ color:var(--muted); font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>TP — DP List</h1>
+        <p class="muted">Responsive list showing "DP" (display picture) and "TP" (title/profile) for each entry.</p>
+      </div>
+      <div class="muted">Items: <strong>6</strong></div>
+    </header>
+
+    <div class="list-card">
+      <div class="tp-dp-list" id="list">
+
+        <!-- item 1 -->
+        <div class="item">
+          <div class="dp" aria-hidden="true">
+            <img src="https://i.pravatar.cc/150?img=12" alt="Avatar of Alice">
+          </div>
+
+          <div class="tp">
+            <p class="title">Alice Johnson <span class="muted">•</span> <span class="muted">Designer</span></p>
+            <div class="meta">Working on the landing page redesign — deadline: Sep 25, 2025</div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" title="Open">Open</button>
+            <button class="btn ghost" title="More">⋯</button>
+          </div>
+        </div>
+
+        <!-- item 2 -->
+        <div class="item">
+          <div class="dp" aria-hidden="true">
+            <img src="https://i.pravatar.cc/150?img=5" alt="Avatar of Ravi">
+          </div>
+
+          <div class="tp">
+            <p class="title">Ravi Kumar <span class="muted">•</span> <span class="muted">Backend</span></p>
+            <div class="meta">API integration and database migration in progress</div>
+          </div>
+
+          <div class="actions">
+            <span class="badge">High</span>
+          </div>
+        </div>
+
+        <!-- item 3 -->
+        <div class="item">
+          <div class="dp" aria-hidden="true">
+            <!-- initials fallback if image fails -->
+            <img src="https://i.pravatar.cc/150?img=32" alt="Avatar of Sara">
+          </div>
+
+          <div class="tp">
+            <p class="title">Sara Lee <span class="muted">•</span> <span class="muted">QA</span></p>
+            <div class="meta">Writing test cases — focus on regression suite</div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" title="Assign">Assign</button>
+          </div>
+        </div>
+
+        <!-- item 4 -->
+        <div class="item">
+          <div class="dp" aria-hidden="true">
+            <img src="https://i.pravatar.cc/150?img=8" alt="Avatar of Omar">
+          </div>
+
+          <div class="tp">
+            <p class="title">Omar Faruk <span class="muted">•</span> <span class="muted">Mobile</span></p>
+            <div class="meta">Implementing new onboarding flow in Android app</div>
+          </div>
+
+          <div class="actions">
+            <span class="badge" style="background:#10b981">Live</span>
+          </div>
+        </div>
+
+        <!-- item 5 -->
+        <div class="item">
+          <div class="dp" aria-hidden="true">
+            <img src="https://i.pravatar.cc/150?img=3" alt="Avatar of Priya">
+          </div>
+
+          <div class="tp">
+            <p class="title">Priya Patel <span class="muted">•</span> <span class="muted">PM</span></p>
+            <div class="meta">Sprint planning and stakeholder sync scheduled</div>
+          </div>
+
+          <div class="actions">
+            <button class="btn ghost">Details</button>
+          </div>
+        </div>
+
+        <!-- item 6 -->
+        <div class="item">
+          <div class="dp" aria-hidden="true">
+            <img src="https://i.pravatar.cc/150?img=16" alt="Avatar of Deepansh">
+          </div>
+
+          <div class="tp">
+            <p class="title">Deepansh Gupta <span class="muted">•</span> <span class="muted">Intern</span></p>
+            <div class="meta">Working on the expense tracker UI components</div>
+          </div>
+
+          <div class="actions">
+            <button class="btn">Message</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
