@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Page</title>
+  <script>
+    function submitData() {
+      let name = document.getElementById("name").value;
+      let language = document.getElementById("language").value;
+      let address = document.getElementById("address").value;
+
+    
+      window.location.href = "resume.html?name=" + encodeURIComponent(name) +
+                             "&language=" + encodeURIComponent(language) +
+                             "&address=" + encodeURIComponent(address);
+    }
+  </script>
+</head>
+<body>
+  <h2>Input Data</h2>
+
+  <label for="name">Name:</label>
+  <input type="text" id="name"><br><br>
+
+  <label for="language">Choose Language:</label>
+  <select id="language">
+    <option value="C++">C++</option>
+    <option value="Python">Python</option>
+    <option value="Java">Java</option>
+    <option value="Rust">Rust</option>
+  </select><br><br>
+
+  <label for="address">Address:</label><br>
+  <textarea id="address" rows="4" cols="30"></textarea><br><br>
+
+  <button onclick="submitData()">Submit Data</button>
+</body>
+</html>
