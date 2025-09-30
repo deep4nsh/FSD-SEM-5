@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Data Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: opacity 0.5s ease;
+    }
+    .display-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+      display: none;
+      animation: fadeIn 0.6s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .top-left-image {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .center-text {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .center-text h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+    .center-text h2 {
+      margin: 10px 0;
+      font-size: 24px;
+      color: #555;
+    }
+    .bottom-left {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="formContainer">
+    <h2>Input Data</h2>
+    <form id="userForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="lang1">Lang1:</label>
+      <input type="text" id="lang1" name="lang1" required><br><br>
+
+      <label for="lang2">Lang2:</label>
+      <input type="text" id="lang2" name="lang2" required><br><br>
+
+      <label for="lang3">Lang3:</label>
+      <input type="text" id="lang3" name="lang3" required><br><br>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required><br><br>
+
+      <button type="submit">Submit Data</button>
+    </form>
+  </div>
+
+  <div class="display-container" id="displayContainer">
+    <img src="1h.jpeg" alt="Profile Image" class="top-left-image">
+
+    <div class="center-text">
+      <h1 id="displayName">Name Placeholder</h1>
+      <h2>BTech (IT)</h2>
+    </div>
+
+    <div class="bottom-left">
+      <p><strong>Languages:</strong></p>
+      <ul>
+        <li id="displayLang1">Lang1</li>
+        <li id="displayLang2">Lang2</li>
+        <li id="displayLang3">Lang3</li>
+      </ul>
+      <p><strong>Address:</strong> <span id="displayAddress">Address Placeholder</span></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('userForm');
+    const formContainer = document.getElementById('formContainer');
+    const displayContainer = document.getElementById('displayContainer');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const lang1 = document.getElementById('lang1').value;
+      const lang2 = document.getElementById('lang2').value;
+      const lang3 = document.getElementById('lang3').value;
+      const address = document.getElementById('address').value;
+
+      document.getElementById('displayName').textContent = name;
+      document.getElementById('displayLang1').textContent = lang1;
+      document.getElementById('displayLang2').textContent = lang2;
+      document.getElementById('displayLang3').textContent = lang3;
+      document.getElementById('displayAddress').textContent = address;
+
+      formContainer.style.display = 'none';
+      displayContainer.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

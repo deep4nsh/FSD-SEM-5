@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-do list</title>
+  <style>
+    body {
+      background-color: rgb(117, 117, 181);
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    #add, #remove {
+      padding: 10px 20px;
+      margin: 10px;
+      border: 2px solid rgb(67, 67, 67);
+      border-radius: 30%;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      color: white;
+     }
+
+    #add {
+      background-color: green;
+    }
+
+    #remove {
+      background-color: red;
+    }
+
+    ul {
+      margin-top: 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+    h1{
+    
+        padding: 5px;
+        margin:10px;
+    }
+  </style>
+</head>
+<body>
+    <h1>To do list</h1>
+  <div class="container">
+    <input type="text" id="task" placeholder="Enter task" />
+    <div>
+      <button onclick="addTask()" id="add">Add task</button>
+      <button onclick="removeTask()" id="remove">Remove task</button>
+    </div>
+    <ol id="tasklist"></ul>
+  </div>
+
+  <script>
+    const arr = [];
+
+    function addTask() {
+      const task = document.getElementById("task").value;
+      if (task === "") return;
+
+      arr.push(task);
+      document.getElementById("task").value = "";  
+      Tasks();
+    }
+
+  
+    function removeTask(){
+        let value = prompt("enter element position");
+        var index = arr.indexOf(value);
+         if (index > -1) {
+            arr.splice(index, 1);
+        }
+        Tasks();
+        }
+    
+    function Tasks() {
+      const tasklist = document.getElementById("tasklist");
+      tasklist.innerHTML = "";
+
+      arr.forEach((task) => {
+        const taskItem = document.createElement("li");
+        taskItem.textContent = task;
+        tasklist.appendChild(taskItem);
+      });
+    }
+  </script>
+</body>
+</html>

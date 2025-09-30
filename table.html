@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Table Example</title>
+  <style>
+    table {
+      margin: 50px auto;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      border: 2px solid black;
+    }
+    td, th {
+      border: 1px solid black;
+      padding: 10px;
+    }
     
+  </style>
 </head>
 <body>
-   
-    <script>
-        // var i;
-        // for(i=1;i<=10;i++){
-        //     document.write("Hello<br>")
-        // }
-        // var a=1;
-        // while(a<=10){
-        //     document.write("Satvik<br>");
-        //     a++;
-        // }
-        // var a=1;
-        // do{
-        //     document.write("oops <br>");
-        //     a++;
-        // }while(a<=10);
-        var n=2;
-        var m=3;
-        var a;
-        for(a=1;a<=10;a++){
-            document.write(n,"*",a,"=",n*a,"<br>");
-        }
-        for( a=1;a<=10;a++){
-            document.write(m,"*",a,"=",m*a,"<br>");
-        }
-        var n = 2;
+  <table>
+    <!-- First row with description -->
+    <tr>
+      <td colspan="4"><b>Description</b></td>
+    </tr>
 
+    <!-- Items rows -->
+    <tr>
+      <td rowspan="3" colspan="2"><b>Items</b></td>
+      <td colspan="2">Milk</td>
+    </tr>
+    <tr>
+      <td colspan="2">Bread</td>
+    </tr>
+    <tr>
+      <td colspan="2">Butter</td>
+    </tr>
 
+    <!-- Price rows -->
+    <tr>
+      <td rowspan="3" colspan="2"><b>Price</b></td>
+      <td colspan="2">20</td>
+    </tr>
+    <tr>
+      <td colspan="2">30</td>
+    </tr>
+    <tr>
+      <td colspan="2">4</td>
+    </tr>
 
+    <!-- Images row -->
+    <tr>
+      <td><p>Images</p></td>
+      <td><img src="images/jar.png" alt="Image2" width="50" height="50"></td>
+      <td><img src="images/profit.png" alt="Image3" width="50" height="50"></td>
+      <td><img src="images/budget.png" alt="Image4" width="50" height="50"></td>
+    </tr>
 
-var even = "even -> ";
-var odd = "odd -> ";
-
-for (a = 1; a <= 10; a++) {
-  let prodN = n * a;
-  let prodM = m * a;
-
-  if (prodN % 2 === 0) {
-    even += prodN + " ";
-  } else {
-    odd += prodN + " ";
-  }
-
-  if (prodM % 2 === 0) {
-    even += prodM + " ";
-  } else {
-    odd += prodM + " ";
-  }
-}
-
-document.write(even + "<br>");
-document.write(odd);
-    </script>
+    <!-- Buttons row -->
+    <tr>
+      <td colspan="2"><button class="add">Add</button></td>
+      <td><button class="update">Update</button></td>
+      <td><button class="remove">Remove</button></td>
+    </tr>
+  </table>
 </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body>
+   
+    <script>
+         
+        var n=2;
+        var m=3;
+        var a;
+        for(a=1;a<=10;a++){
+            document.write(n,"*",a,"=",n*a,"<br>");
+        }
+        for( a=1;a<=10;a++){
+            document.write(m,"*",a,"=",m*a,"<br>");
+        }
+        var n = 2;
+
+
+
+
+var even = "even -> ";
+var odd = "odd -> ";
+
+for (a = 1; a <= 10; a++) {
+  let prodN = n * a;
+  let prodM = m * a;
+
+  if (prodN % 2 === 0) {
+    even += prodN + " ";
+  } else {
+    odd += prodN + " ";
+  }
+
+  if (prodM % 2 === 0) {
+    even += prodM + " ";
+  } else {
+    odd += prodM + " ";
+  }
+}
+
+document.write(even + "<br>");
+document.write(odd);
+    </script>
+</body>
+</html>

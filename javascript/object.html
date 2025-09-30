@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = 'obj'></p>
+    <script>
+
+    //without new keyword
+    // const car  = {
+    // toy1:'car',
+    // toy2:'apple',
+    // toy3:'elephant',
+    //     };
+    // console.log(car.toy1)
+    // document.querySelector('#obj').innerHTML = car.toy1;
+
+    //with new obj
+    // const toy  = new Object({
+    // toy1:"car1",
+    // toy2:'apple',
+    // toy3:'elephant',
+    //     });
+    // console.log(car.toy1)
+    // document.querySelector('#obj').innerHTML = toy.toy1;
+
+
+    //USING CLASSES
+    class First {
+      constructor(name, year) {
+        this.name = name;
+        this.year = year;
+      }
+
+      hello() {
+        const message = this.name + " studies in year " + this.year;
+        document.querySelector('#obj').innerHTML = message;
+       }
+    }
+
+    const obj1 = new First("satvik", 3);
+    obj1.hello();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f3f6;
+        }
+
+        .header {
+            background-color: #c8ccd3;
+            padding: 8px 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1248px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 16px;
+        }
+
+        .logo .plus {
+            font-size: 12px;
+            color: #ffe500;
+            font-style: italic;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 2px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2874f0;
+            font-size: 18px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            color: #ffe500;
+        }
+
+        .dropdown-arrow {
+            font-size: 12px;
+        }
+
+        .cart-icon, .seller-icon {
+            font-size: 18px;
+        }
+
+        .category-nav {
+            background-color: white;
+            border-bottom: 1px solid #e0e6eb;
+            padding: 8px 0;
+        }
+
+        .category-container {
+            max-width: 1248px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #212121;
+            padding: 12px;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .category-item:hover {
+            color: #8c929d;
+        }
+
+        .category-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-text {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .dropdown-arrow-category {
+            font-size: 12px;
+            margin-left: 4px;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background-color: #ff6161;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        /* Category specific styles */
+        .minutes { background: linear-gradient(135deg, #ff6b35, #f7931e); }
+        .mobiles { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .fashion { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .electronics { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .home { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .appliances { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+        .travel { background: linear-gradient(135deg, #d299c2, #fef9d7); }
+        .beauty { background: linear-gradient(135deg, #89f7fe, #66a6ff); }
+        .grocery { background: linear-gradient(135deg, #fdbb2d, #22c1c3); }
+
+        .category-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: 40px;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: brightness(0) invert(1);
+        }
+
+        .minutes::before { content: '🎯'; font-size: 24px; filter: none; }
+        .mobiles::before { content: '📱'; font-size: 24px; filter: none; }
+        .fashion::before { content: '👔'; font-size: 24px; filter: none; }
+        .electronics::before { content: '💻'; font-size: 24px; filter: none; }
+        .home::before { content: '🏠'; font-size: 24px; filter: none; }
+        .appliances::before { content: '📺'; font-size: 24px; filter: none; }
+        .travel::before { content: '✈️'; font-size: 24px; filter: none; }
+        .beauty::before { content: '💄'; font-size: 24px; filter: none; }
+        .grocery::before { content: '🛒'; font-size: 24px; filter: none; }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 8px;
+                gap: 8px;
+            }
+            
+            .nav-right {
+                gap: 16px;
+            }
+            
+            .nav-item {
+                font-size: 14px;
+            }
+            
+            .category-container {
+                overflow-x: auto;
+                justify-content: flex-start;
+                gap: 8px;
+                padding-bottom: 8px;
+            }
+            
+            .category-item {
+                min-width: 80px;
+                padding: 8px;
+            }
+            
+            .category-icon {
+                width: 48px;
+                height: 48px;
+            }
+            
+            .category-text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                Flipkart
+                <span class="plus">Explore Plus+</span>
+            </a>
+            
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search for Products, Brands and More">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <nav class="nav-right">
+                <a href="#" class="nav-item">
+                    Login <span class="dropdown-arrow">▼</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="cart-icon">🛒</span> Cart
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="seller-icon">🏪</span> Become a Seller
+                </a>
+                <span class="nav-item">⋯</span>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <div class="category-container">
+            <a href="#" class="category-item">
+                <div class="category-icon minutes">
+                    <span class="new-badge">NEW</span>
+                </div>
+                <span class="category-text">Minutes</span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon mobiles"></div>
+                <span class="category-text">Mobiles &<br>Tablets</span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon fashion"></div>
+                <span class="category-text">Fashion <span class="dropdown-arrow-category">▼</span></span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon electronics"></div>
+                <span class="category-text">Electronics <span class="dropdown-arrow-category">▼</span></span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon home"></div>
+                <span class="category-text">Home &<br>Furniture <span class="dropdown-arrow-category">▼</span></span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon appliances"></div>
+                <span class="category-text">TVs &<br>Appliances</span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon travel"></div>
+                <span class="category-text">Flight<br>Bookings</span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon beauty"></div>
+                <span class="category-text">Beauty,<br>Food.. <span class="dropdown-arrow-category">▼</span></span>
+            </a>
+            
+            <a href="#" class="category-item">
+                <div class="category-icon grocery"></div>
+                <span class="category-text">Grocery</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
