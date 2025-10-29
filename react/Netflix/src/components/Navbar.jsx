@@ -9,7 +9,7 @@ const Navbar = () => {
           <h1>NETFLIX</h1>
         </div>
         <div className="navbar-links">
-          <a href="#">Home</a>
+          <a href="https://dictionary.cambridge.org/dictionary/english/home">Home</a>
           <a href="#">TV Shows</a>
           <a href="#">Movies</a>
           <a href="#">New & Popular</a>
