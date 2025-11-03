@@ -1,0 +1,22 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#fff;
+  --muted:#6b7280;
+  --accent:#2563eb;
+}
+*{box-sizing:border-box}
+body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#111}
+.app{max-width:1000px;margin:28px auto;padding:20px}
+header h1{margin:0 0 18px}
+.book-form{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.book-form input{flex:1 1 200px;padding:8px;border:1px solid #ddd;border-radius:6px}
+.book-form button{padding:8px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(15,23,42,0.06);display:flex;flex-direction:column}
+.card img{width:100%;height:260px;object-fit:cover;background:#eee}
+.card-body{padding:12px}
+.card h3{margin:0 0 6px;font-size:16px}
+.author{margin:0;color:var(--muted);font-size:14px}
+.actions{margin-top:10px;display:flex;gap:8px}
+.remove{background:#ef4444;color:#fff;padding:6px 8px;border-radius:6px;border:none}
+.empty{color:var(--muted)}
